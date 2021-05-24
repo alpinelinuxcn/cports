@@ -6,6 +6,7 @@ pkgdesc="The Chinese PinYin and Bopomofo conversion library"
 url="https://github.com/pyzy/pyzy"
 arch="all"
 license="LGPL-2.1-or-later"
+depends="glib sqlite util-linux"
 makedepends="
 	git m4 automake autoconf
 	gnome-common libtool glib-dev
