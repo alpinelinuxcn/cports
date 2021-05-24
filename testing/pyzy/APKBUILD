@@ -17,7 +17,9 @@ _giturl="https://hub.fastgit.org/pyzy/pyzy.git"
 build() {
 	rm -rf "$pkgname"
 	git clone --depth 1 "$_giturl" "$pkgname"
-	cd "$pkgname" && ./autogen.sh --prefix=/usr
+	cd "$pkgname"
+	patch -p1 -i ../pyzy-python3.patch
+	./autogen.sh --prefix=/usr
 	cd src && make
 }
 
@@ -29,3 +31,6 @@ package() {
 	cd src && make DESTDIR="$pkgdir" install
 }
 
+sha512sums="
+901900d6b7f40bd9910bb7a200dcb53096169cc6501d0ab34faf25b3e279b8dd0f41702bb48c9554803d2089ab43f245ca7ba98137462572f7625fb7992ec618  pyzy-python3.patch
+"
