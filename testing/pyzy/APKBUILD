@@ -21,9 +21,10 @@ build() {
 }
 
 package() {
+	local _pkgver="${pkgver%.*}"
 	cd "$pkgname"
-	install -Dm644 "$pkgname"-"${pkgver%.*}".pc \
-		"$pkgdir"/usr/lib/pkgconfig/"$pkgname".pc
+	install -Dm644 "$pkgname"-"${_pkgver}".pc \
+		"$pkgdir"/usr/lib/pkgconfig/"$pkgname"-"${_pkgver}".pc
 	cd src && make DESTDIR="$pkgdir" install
 }
 
