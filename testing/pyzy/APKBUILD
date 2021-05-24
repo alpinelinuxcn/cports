@@ -1,0 +1,29 @@
+# Maintainer: urain39 <urain39@qq.com>
+pkgname=pyzy
+pkgver=1.0.0
+pkgrel=0
+pkgdesc="The Chinese PinYin and Bopomofo conversion library"
+url="https://github.com/pyzy/pyzy"
+arch="all"
+license="LGPL-2.1-or-later"
+makedepends="
+	git m4 automake autoconf
+	gnome-common libtool glib-dev
+	sqlite-dev
+"
+_giturl="https://hub.fastgit.org/pyzy/pyzy.git"
+
+build() {
+	rm -rf "$pkgname"
+	git clone --depth 1 "$_giturl" "$pkgname"
+	cd "$pkgname" && ./autogen.sh --prefix=/usr
+	cd src && make
+}
+
+package() {
+	cd "$pkgname"
+	install -Dm644 "$pkgname"-"${pkgver%.*}".pc \
+		"$pkgdir"/usr/lib/pkgconfig/"$pkgname".pc
+	cd src && make DESTDIR="$pkgdir" install
+}
+

@@ -1,0 +1,30 @@
+# Maintainer: urain39 <urain39@qq.com>
+pkgname=ibus-pinyin
+pkgver=1.5.0
+pkgrel=0
+pkgdesc="Chinese PinYin input method and a Chinese ZhuYin (Bopomofo) input method for IBUS"
+url="https://github.com/ibus/ibus-pinyin"
+arch="all !s390x !mips !mips64" # ibus needs librsvg which isn't available on s390x
+license="GPL-2.0-only"
+depends="ibus"
+makedepends="
+	m4 automake autoconf intltool libtool ibus-dev gnome-common
+"
+source="$pkgname-$pkgver.tar.gz::https://hub.fastgit.org/ibus/ibus-pinyin/archive/$pkgver.tar.gz"
+subpackages="$pkgname-lang"
+# anthy tests require a running X server
+options="!check"
+
+build() {
+	./autogen.sh \
+		--prefix=/usr \
+		--libexec=/usr/lib/ibus
+	make
+}
+
+package() {
+	make DESTDIR="$pkgdir" install
+}
+
+sha512sums="0c9d562fa3eda748bfb32de3e081fa17161f820c8330675301b78d1323eefa36bd0a88db4c2994df4b2fbf74b4908ced3cdf900057b1af49ee890d49c61584ab  ibus-pinyin-1.5.0.tar.gz"
+
