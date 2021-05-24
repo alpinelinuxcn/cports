@@ -12,7 +12,10 @@ makedepends="
 	gnome-common libtool glib-dev
 	sqlite-dev
 "
+source="pyzy-python3.patch"
 _giturl="https://hub.fastgit.org/pyzy/pyzy.git"
+
+prepare() { :; }
 
 build() {
 	rm -rf "$pkgname"
@@ -25,7 +28,7 @@ build() {
 
 package() {
 	local _pkgver="${pkgver%.*}"
-	cd "$pkgname"
+	cd src/"$pkgname"
 	install -Dm644 "$pkgname"-"${_pkgver}".pc \
 		"$pkgdir"/usr/lib/pkgconfig/"$pkgname"-"${_pkgver}".pc
 	cd src && make DESTDIR="$pkgdir" install
@@ -34,3 +37,4 @@ package() {
 sha512sums="
 901900d6b7f40bd9910bb7a200dcb53096169cc6501d0ab34faf25b3e279b8dd0f41702bb48c9554803d2089ab43f245ca7ba98137462572f7625fb7992ec618  pyzy-python3.patch
 "
+sha512sums="901900d6b7f40bd9910bb7a200dcb53096169cc6501d0ab34faf25b3e279b8dd0f41702bb48c9554803d2089ab43f245ca7ba98137462572f7625fb7992ec618  pyzy-python3.patch"
