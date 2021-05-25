@@ -27,7 +27,6 @@ build() {
 }
 
 package() {
-	local _pkgver="${pkgver%.*}"
 	cd src/"$pkgname"
 	make DESTDIR="$pkgdir" install
 }
