@@ -12,7 +12,6 @@ makedepends="
 "
 source="$pkgname-$pkgver.tar.gz::https://hub.fastgit.org/ibus/ibus-pinyin/archive/$pkgver.tar.gz"
 subpackages="$pkgname-lang"
-# anthy tests require a running X server
 options="!check"
 
 build() {
