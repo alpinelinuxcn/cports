@@ -23,15 +23,13 @@ build() {
 	cd "$pkgname"
 	patch -p1 -i ../pyzy-python3.patch
 	./autogen.sh --prefix=/usr
-	cd src && make
+	make
 }
 
 package() {
 	local _pkgver="${pkgver%.*}"
 	cd src/"$pkgname"
-	install -Dm644 "$pkgname"-"${_pkgver}".pc \
-		"$pkgdir"/usr/lib/pkgconfig/"$pkgname"-"${_pkgver}".pc
-	cd src && make DESTDIR="$pkgdir" install
+	make DESTDIR="$pkgdir" install
 }
 
 sha512sums="
