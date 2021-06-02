@@ -25,5 +25,5 @@ package() {
 	make NO_INDEX=true DESTDIR="$pkgdir" install
 }
 
-sha512sums="0c9d562fa3eda748bfb32de3e081fa17161f820c8330675301b78d1323eefa36bd0a88db4c2994df4b2fbf74b4908ced3cdf900057b1af49ee890d49c61584ab  ibus-pinyin-1.5.0.tar.gz"
+sha512sums="0c9d562fa3eda748bfb32de3e081fa17161f820c8330675301b78d1323eefa36bd0a88db4c2994df4b2fbf74b4908ced3cdf900057b1af49ee890d49c61584ab  $pkgname-$pkgver.tar.gz"
 
