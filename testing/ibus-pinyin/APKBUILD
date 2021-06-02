@@ -2,7 +2,7 @@
 pkgname=ibus-pinyin
 pkgver=1.5.0
 pkgrel=0
-pkgdesc="Chinese PinYin input method and a Chinese ZhuYin (Bopomofo) input method for IBUS"
+pkgdesc="Chinese PinYin input method and a Chinese ZhuYin (Bopomofo) input method for IBus"
 url="https://github.com/ibus/ibus-pinyin"
 arch="all !s390x !mips !mips64" # ibus needs librsvg which isn't available on s390x
 license="GPL-2.0-only"
