@@ -6,9 +6,9 @@ pkgdesc="Intelligent Pinyin engine based on libpinyin for IBus"
 url="https://github.com/libpinyin/ibus-libpinyin"
 arch="all !s390x !mips !mips64" # ibus needs librsvg which isn't available on s390x
 license="GPL-2.0-only"
-depends="ibus libpinyin lua opencc py3-xdg"
+depends="ibus libpinyin lua py3-xdg"
 makedepends="
-	m4 automake autoconf boost-dev intltool libtool ibus-dev libpinyin-dev libsoup-dev json-glib-dev gnome-common opencc-dev sqlite sqlite-dev
+	m4 automake autoconf boost-dev intltool libtool ibus-dev libpinyin-dev libsoup-dev json-glib-dev gnome-common sqlite sqlite-dev
 "
 source="$pkgname-$pkgver.tar.gz::https://hub.fastgit.org/libpinyin/ibus-libpinyin/archive/$pkgver.tar.gz"
 subpackages="$pkgname-lang"
@@ -19,7 +19,6 @@ build() {
 		--prefix=/usr \
 		--libexecdir=/usr/lib/"$pkgname" \
 		--enable-boost \
-		--enable-opencc \
 		--enable-cloud-input-mode
 	make
 }
